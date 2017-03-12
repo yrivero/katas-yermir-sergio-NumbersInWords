@@ -17,8 +17,8 @@ public class NumbersInWordsParametrizedTest {
         return new Object[][]{
                 {
                     "givenSingleDigitNumberShouldReturnItsDescription",
-                    new String[] {"1$", "2$", "3$"},
-                    new String[] {"one dollar", "two dollars", "three dollars"},
+                    new String[] {"0$", "1$", "2$", "3$", "4$", "5$", "6$", "7$", "8$", "9$"},
+                    new String[] {"zero dollar", "one dollar", "two dollars", "three dollars", "four dollars", "five dollars", "six dollars", "seven dollars", "eight dollars", "nine dollars"}
                 }
         };
     }
