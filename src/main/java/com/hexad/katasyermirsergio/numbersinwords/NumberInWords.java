@@ -7,7 +7,9 @@ public class NumberInWords {
 
     public String convertNumber(String textOfNumber) {
         double plainNumber = extractPlainNumber(textOfNumber);
-        String formattedNumber = formatPlainNumber(plainNumber);
+
+        int integerPlainNumber = doubleToInt(plainNumber);
+        String formattedNumber = formatPlainNumber(integerPlainNumber);
 
         return formattedNumber;
     }
@@ -25,28 +27,28 @@ public class NumberInWords {
         return plainNumber;
     }
 
-    private String formatPlainNumber(double plainNumber) {
-        String formattedNumber = formatNumber(plainNumber);
-        String dollarsSuffix = formatDollarsSuffix(plainNumber);
+    private String formatPlainNumber(int integerPlainNumber) {
+        String formattedNumber = formatNumber(integerPlainNumber);
+        String dollarsSuffix = formatDollarsSuffix(integerPlainNumber);
 
         return formattedNumber + " " + dollarsSuffix;
 
     }
 
-    private String formatNumber(double plainNumber) {
+    private String formatNumber(int integerPlainNumber) {
         String formattedNumber;
 
-        if (isSingleDigitNumber(plainNumber)) {
-            formattedNumber = formatSingleDigitNumber(plainNumber);
+        if (isSingleDigitNumber(integerPlainNumber)) {
+            formattedNumber = formatSingleDigitNumber(integerPlainNumber);
         }
-        else if (isSpecialTwoDigitNumber(plainNumber)) {
-            formattedNumber = formatSpecialTwoDigitNumber(plainNumber);
+        else if (isSpecialTwoDigitNumber(integerPlainNumber)) {
+            formattedNumber = formatSpecialTwoDigitNumber(integerPlainNumber);
         }
-        else if (isNonSpecialTensNumber(plainNumber)) {
-            formattedNumber = formatNonSpecialTensNumber(plainNumber);
+        else if (isNonSpecialTensNumber(integerPlainNumber)) {
+            formattedNumber = formatNonSpecialTensNumber(integerPlainNumber);
         }
-        else if (isCompositeTwoDigitNumber(plainNumber)) {
-            formattedNumber = formatCompositeTwoDigitNumber(plainNumber);
+        else if (isCompositeTwoDigitNumber(integerPlainNumber)) {
+            formattedNumber = formatCompositeTwoDigitNumber(integerPlainNumber);
         }
         else {
             throw new UnsupportedOperationException("Not implemented yet. And maybe never will be!");
@@ -55,38 +57,38 @@ public class NumberInWords {
         return formattedNumber;
     }
 
-    private boolean isSpecialTwoDigitNumber(double plainNumber) {
-        return plainNumber >=10 && plainNumber <= 19;
+    private boolean isSpecialTwoDigitNumber(int integerPlainNumber) {
+        return integerPlainNumber >=10 && integerPlainNumber <= 19;
     }
 
-    private boolean isSingleDigitNumber(double plainNumber) {
-        return plainNumber >=0 && plainNumber <= 9;
+    private boolean isSingleDigitNumber(int integerPlainNumber) {
+        return integerPlainNumber >=0 && integerPlainNumber <= 9;
     }
 
-    private String formatCompositeTwoDigitNumber(double plainNumber) {
-        int units = Double.valueOf(plainNumber).intValue() % 10;
-        int tens = Double.valueOf(plainNumber).intValue() - units;
+    private String formatCompositeTwoDigitNumber(int integerPlainNumber) {
+        int units = integerPlainNumber % 10;
+        int tens = integerPlainNumber - units;
 
         return formatNonSpecialTensNumber(tens) + " " + formatSingleDigitNumber(units);
     }
 
-    private boolean isCompositeTwoDigitNumber(double plainNumber) {
+    private boolean isCompositeTwoDigitNumber(int integerPlainNumber) {
         return
             (
-                !(isSingleDigitNumber(plainNumber))
+                !(isSingleDigitNumber(integerPlainNumber))
                 &&
-                !(isSpecialTwoDigitNumber(plainNumber))
+                !(isSpecialTwoDigitNumber(integerPlainNumber))
                 &&
-                !isNonSpecialTensNumber(plainNumber)
+                !isNonSpecialTensNumber(integerPlainNumber)
             );
     }
 
-    private boolean isNonSpecialTensNumber(double plainNumber) {
-        return plainNumber % 10 == 0 && plainNumber != 10;
+    private boolean isNonSpecialTensNumber(int integerPlainNumber) {
+        return integerPlainNumber % 10 == 0 && integerPlainNumber != 10;
     }
 
-    private String formatDollarsSuffix(double plainNumber) {
-        if (plainNumber == 1.0D ) {
+    private String formatDollarsSuffix(int integerPlainNumber) {
+        if (integerPlainNumber == 1) {
             return "dollar";
         }
         else {
@@ -94,8 +96,8 @@ public class NumberInWords {
         }
     }
 
-    private String formatSingleDigitNumber(double plainNumber) {
-        switch (doubleToInt(plainNumber)) {
+    private String formatSingleDigitNumber(int integerPlainNumber) {
+        switch (integerPlainNumber) {
             case 0:
                 return "zero";
             case 1:
@@ -127,8 +129,8 @@ public class NumberInWords {
     }
 
 
-    private String formatSpecialTwoDigitNumber(double plainNumber) {
-        switch (doubleToInt(plainNumber)) {
+    private String formatSpecialTwoDigitNumber(int integerPlainNumber) {
+        switch (integerPlainNumber) {
             case 10:
                 return "ten";
             case 11:
@@ -156,8 +158,8 @@ public class NumberInWords {
     }
 
 
-    private String formatNonSpecialTensNumber(double plainNumber) {
-        switch (doubleToInt(plainNumber)) {
+    private String formatNonSpecialTensNumber(int integerPlainNumber) {
+        switch (integerPlainNumber) {
             case 20:
                 return "twenty";
             case 30:
