@@ -27,6 +27,13 @@ public class NumbersInWordsParametrizedTest {
                         new String[] {
                                 "ten dollars", "eleven dollars", "twelve dollars", "thirteen dollars", "fourteen dollars",
                                 "fifteen dollars", "sixteen dollars", "seventeen dollars", "eighteen dollars", "nineteen dollars"}
+                },
+                {
+                        "givenANumberInTheTensExceptTenShouldReturnItsDescription",
+                        new String[] {"20$", "30$", "40$", "50$", "60$", "70$", "80$", "90$"},
+                        new String[] {
+                                "twenty dollars", "thirty dollars", "forty dollars", "fifty dollars", "sixty dollars",
+                                "seventy dollars", "eighty dollars", "ninety dollars"}
                 }
         };
     }
