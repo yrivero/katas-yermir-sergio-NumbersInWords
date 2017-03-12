@@ -26,9 +26,9 @@ public class NumbersInWordsParametrizedTest {
                     "two dollars"
                 },
                 {
-                        "givenNumber10ShouldReturnTenDollars",
-                        "10$",
-                        "ten dollars"
+                    "givenNumber3ShouldReturnThreeDollars",
+                    "3$",
+                    "three dollars"
                 }
         };
     }
