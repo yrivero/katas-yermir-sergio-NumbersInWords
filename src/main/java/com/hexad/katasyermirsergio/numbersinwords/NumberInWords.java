@@ -45,11 +45,32 @@ public class NumberInWords {
         else if (isANonSpecialTensNumber(plainNumber)) {
             formattedNumber = formatNonSpecialTensNumber(plainNumber);
         }
+        else if (isACompositeTwoDigitNumber(plainNumber)) {
+            formattedNumber = formatCompositeTwoDigitNumber(plainNumber);
+        }
         else {
             throw new UnsupportedOperationException("Not implemented yet. And maybe never will be!");
         }
 
         return formattedNumber;
+    }
+
+    private String formatCompositeTwoDigitNumber(double plainNumber) {
+        int units = Double.valueOf(plainNumber).intValue() % 10;
+        int tens = Double.valueOf(plainNumber).intValue() - units;
+
+        return formatNonSpecialTensNumber(tens) + " " + formatSingleDigitNumber(units);
+    }
+
+    private boolean isACompositeTwoDigitNumber(double plainNumber) {
+        return
+            (
+                !(plainNumber >=0 && plainNumber <= 9)
+                &&
+                !(plainNumber >=10 && plainNumber <= 19)
+                &&
+                !isANonSpecialTensNumber(plainNumber)
+            );
     }
 
     private boolean isANonSpecialTensNumber(double plainNumber) {
