@@ -34,18 +34,18 @@ public class NumberInWords {
     }
 
     private String formatNumber(double plainNumber) {
-        String formattedNumber = null;
+        String formattedNumber;
 
-        if (plainNumber >=0 && plainNumber <= 9) {
+        if (isSingleDigitNumber(plainNumber)) {
             formattedNumber = formatSingleDigitNumber(plainNumber);
         }
-        else if (plainNumber >=10 && plainNumber <= 19) {
+        else if (isSpecialTwoDigitNumber(plainNumber)) {
             formattedNumber = formatSpecialTwoDigitNumber(plainNumber);
         }
-        else if (isANonSpecialTensNumber(plainNumber)) {
+        else if (isNonSpecialTensNumber(plainNumber)) {
             formattedNumber = formatNonSpecialTensNumber(plainNumber);
         }
-        else if (isACompositeTwoDigitNumber(plainNumber)) {
+        else if (isCompositeTwoDigitNumber(plainNumber)) {
             formattedNumber = formatCompositeTwoDigitNumber(plainNumber);
         }
         else {
@@ -55,6 +55,14 @@ public class NumberInWords {
         return formattedNumber;
     }
 
+    private boolean isSpecialTwoDigitNumber(double plainNumber) {
+        return plainNumber >=10 && plainNumber <= 19;
+    }
+
+    private boolean isSingleDigitNumber(double plainNumber) {
+        return plainNumber >=0 && plainNumber <= 9;
+    }
+
     private String formatCompositeTwoDigitNumber(double plainNumber) {
         int units = Double.valueOf(plainNumber).intValue() % 10;
         int tens = Double.valueOf(plainNumber).intValue() - units;
@@ -62,18 +70,18 @@ public class NumberInWords {
         return formatNonSpecialTensNumber(tens) + " " + formatSingleDigitNumber(units);
     }
 
-    private boolean isACompositeTwoDigitNumber(double plainNumber) {
+    private boolean isCompositeTwoDigitNumber(double plainNumber) {
         return
             (
-                !(plainNumber >=0 && plainNumber <= 9)
+                !(isSingleDigitNumber(plainNumber))
                 &&
-                !(plainNumber >=10 && plainNumber <= 19)
+                !(isSpecialTwoDigitNumber(plainNumber))
                 &&
-                !isANonSpecialTensNumber(plainNumber)
+                !isNonSpecialTensNumber(plainNumber)
             );
     }
 
-    private boolean isANonSpecialTensNumber(double plainNumber) {
+    private boolean isNonSpecialTensNumber(double plainNumber) {
         return plainNumber % 10 == 0 && plainNumber != 10;
     }
 
@@ -87,9 +95,7 @@ public class NumberInWords {
     }
 
     private String formatSingleDigitNumber(double plainNumber) {
-        Double number = new Double(plainNumber);
-
-        switch (number.intValue()) {
+        switch (doubleToInt(plainNumber)) {
             case 0:
                 return "zero";
             case 1:
@@ -116,10 +122,13 @@ public class NumberInWords {
 
     }
 
-    private String formatSpecialTwoDigitNumber(double plainNumber) {
-        Double number = new Double(plainNumber);
+    private int doubleToInt(double plainNumber) {
+        return Double.valueOf(plainNumber).intValue();
+    }
 
-        switch (number.intValue()) {
+
+    private String formatSpecialTwoDigitNumber(double plainNumber) {
+        switch (doubleToInt(plainNumber)) {
             case 10:
                 return "ten";
             case 11:
@@ -148,9 +157,7 @@ public class NumberInWords {
 
 
     private String formatNonSpecialTensNumber(double plainNumber) {
-        Double number = new Double(plainNumber);
-
-        switch (number.intValue()) {
+        switch (doubleToInt(plainNumber)) {
             case 20:
                 return "twenty";
             case 30:
