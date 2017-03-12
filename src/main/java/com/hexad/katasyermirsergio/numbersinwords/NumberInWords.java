@@ -26,18 +26,36 @@ public class NumberInWords {
     }
 
     private String formatNumber(double plainNumber) {
+        String formattedNumber = formatOnlyNumber(plainNumber);
+        String dollarsSuffix = formatDollarsSuffix(plainNumber);
+
+        return formattedNumber + " " + dollarsSuffix;
+
+    }
+
+    private String formatDollarsSuffix(double plainNumber) {
+        if (plainNumber == 1.0D) {
+            return "dollar";
+        }
+        else {
+            return "dollars";
+        }
+    }
+
+    private String formatOnlyNumber(double plainNumber) {
         Double number = new Double(plainNumber);
 
         switch (number.intValue()) {
             case 1:
-                return "one dollar";
+                return "one";
             case 2:
-                return "two dollars";
+                return "two";
             case 3:
-                return "three dollars";
+                return "three";
             default:
                 throw new UnsupportedOperationException("Not implemented yet!");
         }
+
     }
 
 }
