@@ -24,6 +24,11 @@ public class NumbersInWordsParametrizedTest {
                     "givenNumberTwoShouldReturnTwoDollars",
                     "2$",
                     "two dollars"
+                },
+                {
+                        "givenNumber10ShouldReturnTenDollars",
+                        "10$",
+                        "ten dollars"
                 }
         };
     }
