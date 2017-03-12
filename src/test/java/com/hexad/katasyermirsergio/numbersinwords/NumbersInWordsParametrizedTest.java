@@ -16,19 +16,9 @@ public class NumbersInWordsParametrizedTest {
     public static Object[][] testData(){
         return new Object[][]{
                 {
-                    "givenNumberOneShouldReturnOneDollar",
-                    "1$",
-                    "one dollar"
-                },
-                {
-                    "givenNumberTwoShouldReturnTwoDollars",
-                    "2$",
-                    "two dollars"
-                },
-                {
-                    "givenNumber3ShouldReturnThreeDollars",
-                    "3$",
-                    "three dollars"
+                    "givenSingleDigitNumberShouldReturnItsDescription",
+                    new String[] {"1$", "2$", "3$"},
+                    new String[] {"one dollar", "two dollars", "three dollars"},
                 }
         };
     }
@@ -36,12 +26,18 @@ public class NumbersInWordsParametrizedTest {
     @Parameterized.Parameter(0)
     public String testName;
     @Parameterized.Parameter(1)
-    public String textOfNumber;
+    public String[] textOfNumber;
     @Parameterized.Parameter(2)
-    public String expectedWordsOfNumber;
+    public String[] expectedWordsOfNumber;
 
     @Test
     public void test() throws Exception {
+        for (int i=0; i<textOfNumber.length; i++) {
+            testSingleNumber(textOfNumber[i], expectedWordsOfNumber[i]);
+        }
+    }
+
+    private void testSingleNumber(String textOfNumber, String expectedWordsOfNumber) {
         NumberInWords numberInWords = new NumberInWords();
         String actualWordsOfTheNumber = numberInWords.convertNumber(textOfNumber);
         assertEquals(testName, expectedWordsOfNumber, actualWordsOfTheNumber);
