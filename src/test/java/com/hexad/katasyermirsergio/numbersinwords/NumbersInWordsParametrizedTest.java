@@ -34,6 +34,13 @@ public class NumbersInWordsParametrizedTest {
                         new String[] {
                                 "twenty dollars", "thirty dollars", "forty dollars", "fifty dollars", "sixty dollars",
                                 "seventy dollars", "eighty dollars", "ninety dollars"}
+                },
+                {
+                        "givenACompositeTwoDigitNumberShouldReturnItsDescription",
+                        new String[] {"21$", "32$", "43$", "54$", "65$", "76$", "87$", "98$", "29$"},
+                        new String[] {
+                                "twenty one dollars", "thirty two dollars", "forty three dollars", "fifty four dollars", "sixty five dollars",
+                                "seventy six dollars", "eighty seven dollars", "ninety eight dollars", "twenty nine dollars"}
                 }
         };
     }
