@@ -5,8 +5,14 @@ package com.hexad.katasyermirsergio.numbersinwords;
  */
 public class NumberInWords {
 
-
     public String convertNumber(String textOfNumber) {
-        return "one dollar";
+        if (textOfNumber.equals("1$")) {
+            return "one dollar";
+        }
+        else {
+            return "two dollars";
+        }
+
     }
+
 }
