@@ -23,9 +23,9 @@ public class NumbersInWordsParametrizedTest {
                 },
                 {
                         "givenTwoDigitNumberShouldReturnItsDescription",
-                        new String[] {"11$", "12$", "13$", "14$", "15$", "16$", "17$", "18$", "19$"},
+                        new String[] {"10$", "11$", "12$", "13$", "14$", "15$", "16$", "17$", "18$", "19$"},
                         new String[] {
-                                "eleven dollars", "twelve dollars", "thirteen dollars", "fourteen dollars",
+                                "ten dollars", "eleven dollars", "twelve dollars", "thirteen dollars", "fourteen dollars",
                                 "fifteen dollars", "sixteen dollars", "seventeen dollars", "eighteen dollars", "nineteen dollars"}
                 }
         };
