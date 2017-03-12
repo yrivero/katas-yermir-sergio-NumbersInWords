@@ -14,4 +14,11 @@ public class NumbersInWordsTest {
         String wordsOfTheNumber = numberInWords.convertNumber("1$");
         assertEquals("one dollar", wordsOfTheNumber);
     }
+
+    @Test
+    public void givenNumberTwoShouldReturnTwoDollars() throws Exception {
+        NumberInWords numberInWords = new NumberInWords();
+        String wordsOfTheNumber = numberInWords.convertNumber("2$");
+        assertEquals("two dollars", wordsOfTheNumber);
+    }
 }
