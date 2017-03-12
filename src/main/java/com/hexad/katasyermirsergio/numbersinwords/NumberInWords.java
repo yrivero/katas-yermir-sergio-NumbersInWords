@@ -7,6 +7,6 @@ public class NumberInWords {
 
 
     public String convertNumber(String textOfNumber) {
-        return null;
+        return "one dollar";
     }
 }
