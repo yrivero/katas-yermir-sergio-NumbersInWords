@@ -20,6 +20,13 @@ public class NumbersInWordsParametrizedTest {
                     new String[] {"0$", "1$", "2$", "3$", "4$", "5$", "6$", "7$", "8$", "9$"},
                     new String[] {"zero dollars", "one dollar", "two dollars", "three dollars", "four dollars",
                             "five dollars", "six dollars", "seven dollars", "eight dollars", "nine dollars"}
+                },
+                {
+                        "givenTwoDigitNumberShouldReturnItsDescription",
+                        new String[] {"11$", "12$", "13$", "14$", "15$", "16$", "17$", "18$", "19$"},
+                        new String[] {
+                                "eleven dollars", "twelve dollars", "thirteen dollars", "fourteen dollars",
+                                "fifteen dollars", "sixteen dollars", "seventeen dollars", "eighteen dollars", "nineteen dollars"}
                 }
         };
     }
