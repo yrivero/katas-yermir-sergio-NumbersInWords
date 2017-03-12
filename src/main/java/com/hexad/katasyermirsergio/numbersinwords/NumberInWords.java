@@ -39,14 +39,21 @@ public class NumberInWords {
         if (plainNumber >=0 && plainNumber <= 9) {
             formattedNumber = formatSingleDigitNumber(plainNumber);
         }
-        else if (plainNumber >=11 && plainNumber <= 19) {
+        else if (plainNumber >=10 && plainNumber <= 19) {
             formattedNumber = formatSpecialTwoDigitNumber(plainNumber);
+        }
+        else if (isANonSpecialTensNumber(plainNumber)) {
+            formattedNumber = formatNonSpecialTensNumber(plainNumber);
         }
         else {
             throw new UnsupportedOperationException("Not implemented yet. And maybe never will be!");
         }
 
         return formattedNumber;
+    }
+
+    private boolean isANonSpecialTensNumber(double plainNumber) {
+        return plainNumber % 10 == 0 && plainNumber != 10;
     }
 
     private String formatDollarsSuffix(double plainNumber) {
@@ -92,6 +99,8 @@ public class NumberInWords {
         Double number = new Double(plainNumber);
 
         switch (number.intValue()) {
+            case 10:
+                return "ten";
             case 11:
                 return "eleven";
             case 12:
@@ -117,4 +126,29 @@ public class NumberInWords {
     }
 
 
+    private String formatNonSpecialTensNumber(double plainNumber) {
+        Double number = new Double(plainNumber);
+
+        switch (number.intValue()) {
+            case 20:
+                return "twenty";
+            case 30:
+                return "thirty";
+            case 40:
+                return "forty";
+            case 50:
+                return "fifty";
+            case 60:
+                return "sixty";
+            case 70:
+                return "seventy";
+            case 80:
+                return "eighty";
+            case 90:
+                return "ninety";
+            default:
+                throw new IllegalArgumentException("Is not a non special tens number");
+        }
+
+    }
 }
