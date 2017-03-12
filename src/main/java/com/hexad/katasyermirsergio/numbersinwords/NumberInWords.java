@@ -13,20 +13,30 @@ public class NumberInWords {
     }
 
     private double extractPlainNumber(String textOfNumber) {
-        if (textOfNumber.equals("1$")) {
-            return 1.0D;
-        }
-        else {
-            return 2.0D;
-        }
+        // Remove dollar sign
+        textOfNumber = textOfNumber.replace("$", "");
+        // Remove whitespaces left and right
+        textOfNumber = textOfNumber.trim();
+        // Remove the thousands separator (comma)
+        textOfNumber = textOfNumber.replace(",", "");
+        // Parse it as double
+        double plainNumber = Double.valueOf(textOfNumber);
+
+        return plainNumber;
     }
 
-    private String formatNumber(Double plainNumber) {
-        if (plainNumber == 1.0D) {
-            return "one dollar";
-        }
-        else {
-            return "two dollars";
+    private String formatNumber(double plainNumber) {
+        Double number = new Double(plainNumber);
+
+        switch (number.intValue()) {
+            case 1:
+                return "one dollar";
+            case 2:
+                return "two dollars";
+            case 3:
+                return "three dollars";
+            default:
+                throw new UnsupportedOperationException("Not implemented yet!");
         }
     }
 
