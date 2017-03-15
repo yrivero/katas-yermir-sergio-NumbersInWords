@@ -43,7 +43,7 @@ public class NumbersInWordsParametrizedTest {
                                 "seventy six dollars", "eighty seven dollars", "ninety eight dollars", "twenty nine dollars"}
                 },
                 {
-                        "givenAThreeDigitsNumberItShouldReturnItsDescription",
+                        "givenANumberInTheHundredsItShouldReturnItsDescription",
                         new String[] {"100$", "200$", "300$", "400$", "500$", "600$", "700$", "800$", "900$"},
                         new String[] {
                                 "one hundred dollars", "two hundred dollars", "three hundred dollars", "four hundred dollars", "five hundred dollars",
