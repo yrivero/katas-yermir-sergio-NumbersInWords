@@ -53,11 +53,38 @@ public class NumberInWords {
         else if (isHundredsNumber(integerPlainNumber)) {
             formattedNumber = formatHundredsNumber(integerPlainNumber);
         }
+        else if (isThreeDigitNumber(integerPlainNumber)) {
+            formattedNumber = formatThreeDigitNumber(integerPlainNumber);
+        }
         else {
-            throw new UnsupportedOperationException("Not implemented yet. And maybe never will be!");
+            throw new UnsupportedOperationException("Not implemented yet. And maybe never will be! " + integerPlainNumber);
         }
 
         return formattedNumber;
+    }
+
+    private String formatThreeDigitNumber(int integerPlainNumber) {
+            int hundreds = integerPlainNumber/100;
+            int tensAndUnits = integerPlainNumber%100;
+            String number = formatHundredsNumber(hundreds*100)+ " ";
+            number+="and ";
+
+            if(isSingleDigitNumber(tensAndUnits) ){
+                number+=formatSingleDigitNumber(tensAndUnits);//101
+            }else if(isSpecialTwoDigitNumber(tensAndUnits)){
+                number+=formatSpecialTwoDigitNumber(tensAndUnits);//111
+            }else if(isNonSpecialTensNumber(tensAndUnits)){
+                number+=formatNonSpecialTensNumber(tensAndUnits);//120
+            }else if(isCompositeTwoDigitNumber(tensAndUnits)){//122
+                number+=formatCompositeTwoDigitNumber(tensAndUnits);
+            }else{
+                throw new IllegalArgumentException("Unknown two digit number type: " + tensAndUnits);
+            }
+            return number;
+    }
+
+    private boolean isThreeDigitNumber(int integerPlainNumber) {
+            return !isHundredsNumber(integerPlainNumber) && integerPlainNumber>=100 && integerPlainNumber < 1000;
     }
 
     private boolean isSpecialTwoDigitNumber(int integerPlainNumber) {
