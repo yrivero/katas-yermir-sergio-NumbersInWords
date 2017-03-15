@@ -54,6 +54,21 @@ public class NumbersInWordsParametrizedTest {
                         new String[] {"101$", "211$", "350$", "499$"},
                         new String[] {
                                 "one hundred and one dollars", "two hundred and eleven dollars", "three hundred and fifty dollars", "four hundred and ninety nine dollars"}
+                },
+                {
+                        "givenAFourDigitsNumberItShouldReturnItsDescription",
+                        new String[] {"1101$", "2211$", "3350$", "4499$", "5505$", "6611$", "7450$", "8299$", "9399$"},
+                        new String[] {
+                                "one hundred and one dollars",
+                                "two hundred and eleven dollars",
+                                "three hundred and fifty dollars",
+                                "four hundred and ninety nine dollars",
+                                "five thousand five hundred and five dollars",
+                                "six thousand six hundred and eleven dollars",
+                                "seven thousand four hundred and fifty dollars",
+                                "eight thousand two hundred and ninety nine dollars",
+                                "nine thousand three hundred and ninety nine dollars"
+                        }
                 }
         };
     }
