@@ -50,6 +50,9 @@ public class NumberInWords {
         else if (isCompositeTwoDigitNumber(integerPlainNumber)) {
             formattedNumber = formatCompositeTwoDigitNumber(integerPlainNumber);
         }
+        else if (isHundredsNumber(integerPlainNumber)) {
+            formattedNumber = formatHundredsNumber(integerPlainNumber);
+        }
         else {
             throw new UnsupportedOperationException("Not implemented yet. And maybe never will be!");
         }
@@ -75,6 +78,8 @@ public class NumberInWords {
     private boolean isCompositeTwoDigitNumber(int integerPlainNumber) {
         return
             (
+                (integerPlainNumber>=0 && integerPlainNumber<100)
+                &&
                 !(isSingleDigitNumber(integerPlainNumber))
                 &&
                 !(isSpecialTwoDigitNumber(integerPlainNumber))
@@ -84,7 +89,10 @@ public class NumberInWords {
     }
 
     private boolean isNonSpecialTensNumber(int integerPlainNumber) {
-        return integerPlainNumber % 10 == 0 && integerPlainNumber != 10;
+        return
+                (integerPlainNumber>=0 && integerPlainNumber<100)
+                && integerPlainNumber % 10 == 0
+                && integerPlainNumber != 10;
     }
 
     private String formatDollarsSuffix(int integerPlainNumber) {
@@ -181,4 +189,19 @@ public class NumberInWords {
         }
 
     }
+
+    private boolean isHundredsNumber(int integerPlainNumber) {
+        return (integerPlainNumber % 100 == 0);
+    }
+
+    private String formatHundredsNumber(int integerPlainNumber) {
+        int hundreds = integerPlainNumber / 100;
+
+        String hundredsInWords = formatSingleDigitNumber(hundreds);
+
+        String number = hundredsInWords + " " + "hundred";
+
+        return number;
+    }
+
 }

@@ -46,8 +46,8 @@ public class NumbersInWordsParametrizedTest {
                         "givenAThreeDigitsNumberItShouldReturnItsDescription",
                         new String[] {"100$", "200$", "300$", "400$", "500$", "600$", "700$", "800$", "900$"},
                         new String[] {
-                                "one hundred dollars", "two hundred dollars", "three hundred dollars", "four hundred dollars", "six hundred dollars",
-                                "seven hundred dollars", "eight hundred dollars", "nine hundred dollars"}
+                                "one hundred dollars", "two hundred dollars", "three hundred dollars", "four hundred dollars", "five hundred dollars",
+                                "six hundred dollars", "seven hundred dollars", "eight hundred dollars", "nine hundred dollars"}
                 }
         };
     }
