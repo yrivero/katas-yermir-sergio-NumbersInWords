@@ -48,6 +48,12 @@ public class NumbersInWordsParametrizedTest {
                         new String[] {
                                 "one hundred dollars", "two hundred dollars", "three hundred dollars", "four hundred dollars", "five hundred dollars",
                                 "six hundred dollars", "seven hundred dollars", "eight hundred dollars", "nine hundred dollars"}
+                },
+                {
+                        "givenAThreeDigitsNumberItShouldReturnItsDescription",
+                        new String[] {"101$", "211$", "350$", "499$"},
+                        new String[] {
+                                "one hundred and one dollars", "two hundred and eleven dollars", "three hundred and fifty dollars", "four hundred and ninety nine dollars"}
                 }
         };
     }
